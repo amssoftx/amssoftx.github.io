@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services | AMSSoftX</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --bg-deep: #020202; --cyan-glow: #00f3ff; --purple-glow: #bc13fe; --text-main: #ffffff; --text-dim: #8892b0; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--bg-deep); color: var(--text-main); font-family: 'Space Grotesk', sans-serif; line-height: 1.6; }
+
+        /* Orb Background same as Main Page */
+        .orb-container { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; background: var(--bg-deep); }
+        .orb { position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.4; }
+        .orb-1 { width: 40vw; height: 40vw; background: var(--purple-glow); top: -10%; left: -10%; }
+        .orb-2 { width: 30vw; height: 30vw; background: var(--cyan-glow); bottom: -10%; right: -10%; }
+
+        header { padding: 1.5rem 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .cyber-logo { font-family: 'Syncopate', sans-serif; font-size: 1.5rem; text-decoration: none; color: #fff; letter-spacing: 2px; }
+        
+        .container { max-width: 1100px; margin: 100px auto; padding: 0 5%; }
+        h1 { font-family: 'Syncopate', sans-serif; font-size: 3rem; margin-bottom: 3rem; color: var(--cyan-glow); }
+        
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
+        .service-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); padding: 3rem; border-radius: 20px; transition: 0.3s; }
+        .service-card:hover { border-color: var(--cyan-glow); transform: translateY(-5px); }
+        h3 { color: #fff; margin-bottom: 1rem; font-size: 1.5rem; }
+        ul { color: var(--text-dim); margin-top: 1rem; padding-left: 1.5rem; }
+        li { margin-bottom: 0.5rem; }
+        
+        .footer-link { color: var(--cyan-glow); text-decoration: none; display: inline-block; margin-top: 3rem; border-bottom: 1px solid var(--cyan-glow); }
+    </style>
+</head>
+<body>
+
+    <div class="orb-container"><div class="orb orb-1"></div><div class="orb orb-2"></div></div>
+
+    <header>
+        <a href="index.html" class="cyber-logo">AMSSOFTX</a>
+        <nav><a href="index.html" style="color:#fff; text-decoration:none;">BACK TO HOME</a></nav>
+    </header>
+
+    <div class="container">
+        <h1>Infrastructure Services</h1>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>Custom Software Development</h3>
+                <p>We architect powerful digital solutions for businesses and startups.</p>
+                <ul>
+                    <li>Web Applications (Full Stack)</li>
+                    <li>Android & iOS Mobile Apps</li>
+                    <li>Enterprise PC Software</li>
+                    <li>AI-Powered Chatbots & Automation</li>
+                </ul>
+            </div>
+            <div class="service-card">
+                <h3>Electronics & Embedded Systems</h3>
+                <p>Bridging physical hardware with intelligent digital ecosystems.</p>
+                <ul>
+                    <li>Custom PCB Design</li>
+                    <li>IoT & Smart Home Solutions</li>
+                    <li>Embedded Firmware Development</li>
+                    <li>Prototyping & Hardware Testing</li>
+                </ul>
+            </div>
+            <div class="service-card">
+                <h3>Digital Marketing & Web</h3>
+                <p>Establishing your dominance in the digital space through data-driven results.</p>
+                <ul>
+                    <li>Professional WordPress Development</li>
+                    <li>Strategic SEO & Ranking</li>
+                    <li>Graphic Design & Branding</li>
+                    <li>Growth Hacking Strategies</li>
+                </ul>
+            </div>
+            <div class="service-card">
+                <h3>Academic Project Support</h3>
+                <p>End-to-end guidance for the next generation of engineers.</p>
+                <ul>
+                    <li>AI & ML Project Implementations</li>
+                    <li>Embedded & IoT Research Projects</li>
+                    <li>Full Documentation (Synopsis/Reports)</li>
+                    <li>Presentation & Viva Support</li>
+                </ul>
+            </div>
+        </div>
+
+        <a href="index.html" class="footer-link">← Return to Main Terminal</a>
+    </div>
+
+</body>
+</html>
