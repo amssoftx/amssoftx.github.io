@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact AMSSoftX — India's First AI Vibe Coding & Prompt Engineering Startup.">
+    <title>AMSSoftX | Establish Connection</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-deep: #020202;
+            --bg-card: #050505;
+            --cyan-glow: #00f3ff;
+            --purple-glow: #bc13fe;
+            --text-main: #ffffff;
+            --text-dim: #8892b0;
+            --font-display: 'Syncopate', sans-serif;
+            --font-body: 'Space Grotesk', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* --- BACKGROUND ORBS --- */
+        .orb-container {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            overflow: hidden;
+            z-index: -1;
+            background: var(--bg-deep);
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.4;
+            animation: float 20s infinite alternate ease-in-out;
+        }
+
+        .orb-1 {
+            width: 40vw; height: 40vw;
+            background: var(--purple-glow);
+            top: 20%; left: -10%;
+        }
+
+        .orb-2 {
+            width: 30vw; height: 30vw;
+            background: var(--cyan-glow);
+            bottom: 10%; right: -5%;
+            animation-delay: -10s;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(10%, 20%) scale(1.1); }
+            100% { transform: translate(-10%, 10%) scale(0.9); }
+        }
+
+        /* --- HEADER & CSS LOGO --- */
+        header {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(2, 2, 2, 0.4);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            z-index: 1000;
+        }
+
+        .cyber-logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--text-main);
+            letter-spacing: 2px;
+        }
+
+        .cyber-logo .x-mark {
+            font-size: 2.2rem;
+            position: relative;
+            margin-left: 5px;
+            color: transparent;
+            -webkit-text-stroke: 1px #fff;
+            transform: skewX(-15deg);
+        }
+
+        .cyber-logo .x-mark::before, .cyber-logo .x-mark::after {
+            content: 'X';
+            position: absolute;
+            top: 0; left: 0;
+            opacity: 0.8;
+            mix-blend-mode: screen;
+            transition: all 0.3s ease;
+        }
+        
+        .cyber-logo .x-mark::before { color: var(--cyan-glow); transform: translate(-3px, -2px); }
+        .cyber-logo .x-mark::after { color: var(--purple-glow); transform: translate(3px, 2px); }
+        
+        .cyber-logo:hover .x-mark::before { transform: translate(-6px, -4px); filter: blur(2px); }
+        .cyber-logo:hover .x-mark::after { transform: translate(6px, 4px); filter: blur(2px); }
+
+        nav ul { list-style: none; display: flex; gap: 3rem; }
+        
+        nav a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        nav a:hover { color: var(--text-main); }
+        nav a::before {
+            content: '';
+            position: absolute;
+            bottom: -5px; left: 0; width: 100%; height: 1px;
+            background: linear-gradient(90deg, var(--cyan-glow), var(--purple-glow));
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.4s ease;
+        }
+        nav a:hover::before { transform: scaleX(1); transform-origin: left; }
+
+        /* --- CONTACT SECTION LAYOUT --- */
+        .contact-section {
+            padding: 160px 5% 100px;
+            max-width: 1300px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 5;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 3rem);
+            text-transform: uppercase;
+            background: linear-gradient(90deg, #fff, #888);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        /* --- GLASSMORPHISM FORM --- */
+        .glass-form {
+            background: rgba(10, 10, 10, 0.6);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 3rem;
+            backdrop-filter: blur(16px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+
+        .input-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .glass-input {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            color: var(--text-main);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .glass-input:focus {
+            border-color: var(--cyan-glow);
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.15);
+        }
+
+        textarea.glass-input {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .btn-magic {
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            padding: 1.2rem 3rem;
+            background: transparent;
+            color: #fff;
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 1rem;
+            letter-spacing: 3px;
+            text-decoration: none;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 100px;
+            overflow: hidden;
+            transition: all 0.3s;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+
+        .btn-magic::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+            z-index: -1;
+        }
+
+        .btn-magic:hover {
+            border-color: var(--cyan-glow);
+            box-shadow: 0 0 30px rgba(0, 243, 255, 0.3);
+        }
+        .btn-magic:hover::before { left: 100%; }
+
+        /* --- CONTACT INFO BOXES --- */
+        .info-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .bento-item {
+            padding: 2rem;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 16px;
+            text-decoration: none;
+            color: var(--text-main);
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .bento-item:hover {
+            background: rgba(255,255,255,0.05);
+            border-color: var(--cyan-glow);
+            transform: translateX(10px);
+            box-shadow: -10px 10px 30px rgba(0, 243, 255, 0.1);
+        }
+
+        .icon-box {
+            width: 50px; height: 50px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s;
+        }
+
+        .bento-item:hover .icon-box {
+            border-color: var(--cyan-glow);
+            color: var(--cyan-glow);
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
+        }
+
+        .info-content h3 {
+            font-size: 0.9rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.3rem;
+            font-family: var(--font-body);
+        }
+
+        .info-content p {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding: 3rem 5%;
+            position: relative;
+            z-index: 5;
+            background: linear-gradient(to top, #000, transparent);
+            text-align: center;
+            color: var(--text-dim);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 900px) {
+            .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .info-panel { order: 2; }
+            .glass-form { order: 1; padding: 2rem; }
+        }
+
+        @media (max-width: 768px) {
+            nav { display: none; }
+            .cyber-logo .x-mark { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="orb-container">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+    </div>
+
+    <header>
+        <a href="index.html" class="cyber-logo">
+            AMSSOFT<span class="x-mark">X</span>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#about">About Us</a></li>
+                <li><a href="index.html#resources">Open Source</a></li>
+                <li><a href="contact.html" style="color: var(--text-main);">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="contact-section">
+        <div class="section-header">
+            <h1 class="section-title">Establish Connection</h1>
+            <p style="color: var(--text-dim); font-size: 1.1rem; max-width: 600px; margin: 0 auto;">Deploy your project requirements or academic inquiries to our system. Our architects will respond shortly.</p>
+        </div>
+
+        <div class="contact-grid">
+            <div class="glass-form">
+                <form action="#" method="POST">
+                    <div class="input-group">
+                        <label for="name">System ID (Name)</label>
+                        <input type="text" id="name" name="name" class="glass-input" placeholder="Enter your name" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="email">Comms Link (Email)</label>
+                        <input type="email" id="email" name="email" class="glass-input" placeholder="Enter your email" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="subject">Protocol Subject</label>
+                        <input type="text" id="subject" name="subject" class="glass-input" placeholder="e.g. AI Project, Custom Software">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="message">Transmission Data</label>
+                        <textarea id="message" name="message" class="glass-input" placeholder="Describe your project or inquiry..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-magic">SEND TRANSMISSION</button>
+                </form>
+            </div>
+
+            <div class="info-panel">
+                <a href="https://wa.me/919604872319" target="_blank" class="bento-item">
+                    <div class="icon-box">💬</div>
+                    <div class="info-content">
+                        <h3>Secure WhatsApp Line</h3>
+                        <p>+91 96048 72319</p>
+                    </div>
+                </a>
+
+                <a href="mailto:amssoftx@gmail.com" class="bento-item">
+                    <div class="icon-box">✉️</div>
+                    <div class="info-content">
+                        <h3>Email Interface</h3>
+                        <p>amssoftx@gmail.com</p>
+                    </div>
+                </a>
+
+                <a href="tel:+919604872319" class="bento-item">
+                    <div class="icon-box">📞</div>
+                    <div class="info-content">
+                        <h3>Voice Comms</h3>
+                        <p>+91 96048 72319</p>
+                    </div>
+                </a>
+
+                <div class="bento-item" style="cursor: default;">
+                    <div class="icon-box">📍</div>
+                    <div class="info-content">
+                        <h3>Headquarters</h3>
+                        <p>Pune, Maharashtra, India</p>
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                    <a href="https://github.com/AMSSoftX" target="_blank" class="bento-item" style="flex: 1; justify-content: center; padding: 1.5rem;">
+                        🐙 GitHub
+                    </a>
+                    <a href="https://youtube.com/@AMSSoftXTech" target="_blank" class="bento-item" style="flex: 1; justify-content: center; padding: 1.5rem;">
+                        ▶️ YouTube
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div>&copy; 2026 AMSSoftX. All Rights Reserved. | Initiated & Architected by Aniket Sarate.</div>
+    </footer>
+
+</body>
+</html>
