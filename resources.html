@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecosystem | AMSSoftX</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --bg-deep: #020202; --cyan-glow: #00f3ff; --text-main: #ffffff; --text-dim: #8892b0; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--bg-deep); color: var(--text-main); font-family: 'Space Grotesk', sans-serif; line-height: 1.6; }
+
+        .orb-container { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; background: var(--bg-deep); }
+        .orb { position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.4; }
+        .orb-1 { width: 40vw; height: 40vw; background: #bc13fe; top: -10%; left: -10%; }
+        .orb-2 { width: 30vw; height: 30vw; background: var(--cyan-glow); bottom: -10%; right: -10%; }
+
+        header { padding: 1.5rem 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .cyber-logo { font-family: 'Syncopate', sans-serif; font-size: 1.5rem; text-decoration: none; color: #fff; letter-spacing: 2px; }
+        
+        .container { max-width: 1000px; margin: 100px auto; padding: 0 5%; }
+        h1 { font-family: 'Syncopate', sans-serif; font-size: 3rem; margin-bottom: 3rem; color: var(--cyan-glow); }
+        
+        .bento-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+        .bento-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); padding: 2.5rem; border-radius: 20px; transition: 0.3s; }
+        .bento-card:hover { border-color: var(--cyan-glow); transform: translateY(-5px); }
+        h3 { color: #fff; margin-bottom: 1rem; }
+        p { color: var(--text-dim); margin-bottom: 1.5rem; }
+        .link-btn { color: var(--cyan-glow); text-decoration: none; font-weight: 600; font-size: 0.9rem; }
+        
+        .footer-link { color: var(--cyan-glow); text-decoration: none; display: inline-block; margin-top: 3rem; border-bottom: 1px solid var(--cyan-glow); }
+    </style>
+</head>
+<body>
+
+    <div class="orb-container"><div class="orb orb-1"></div><div class="orb orb-2"></div></div>
+
+    <header>
+        <a href="index.html" class="cyber-logo">AMSSOFTX</a>
+        <nav><a href="index.html" style="color:#fff; text-decoration:none;">BACK TO HOME</a></nav>
+    </header>
+
+    <div class="container">
+        <h1>Resources & Tools</h1>
+        
+        <div class="bento-grid">
+            <div class="bento-card">
+                <h3>Free Software Tools</h3>
+                <p>Download our custom-built utilities designed to simplify daily development and automation tasks.</p>
+                <a href="#" class="link-btn">Explore Tools →</a>
+            </div>
+            <div class="bento-card">
+                <h3>AI Prompt Library</h3>
+                <p>A curated collection of professional-grade prompts for Vibe Coding, AI automation, and system architecture.</p>
+                <a href="#" class="link-btn">View Prompts →</a>
+            </div>
+            <div class="bento-card">
+                <h3>Open Source Code</h3>
+                <p>Browse our GitHub repositories. Access clean, production-ready code snippets and full project templates.</p>
+                <a href="https://github.com/AMSSoftX" target="_blank" class="link-btn">Visit GitHub →</a>
+            </div>
+            <div class="bento-card">
+                <h3>YouTube Academy</h3>
+                <p>In-depth video tutorials on Electronics, AI implementation, and startup development workflows.</p>
+                <a href="https://youtube.com/@AMSSoftXTech" target="_blank" class="link-btn">Watch Videos →</a>
+            </div>
+            <div class="bento-card">
+                <h3>Tech Blogs</h3>
+                <p>Read our latest articles on startup journeys, hardware breakthroughs, and AI trends shaping India's tech future.</p>
+                <a href="#" class="link-btn">Read Blogs →</a>
+            </div>
+            <div class="bento-card">
+                <h3>Electronic Hardware</h3>
+                <p>Detailed documentation and demos for our proprietary electronics products and IoT hardware modules.</p>
+                <a href="#" class="link-btn">View Products →</a>
+            </div>
+        </div>
+
+        <a href="index.html" class="footer-link">← Return to Main Terminal</a>
+    </div>
+
+</body>
+</html>
