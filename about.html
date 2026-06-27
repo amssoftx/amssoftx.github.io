@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | AMSSoftX</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --bg-deep: #020202; --cyan-glow: #00f3ff; --text-main: #ffffff; --text-dim: #8892b0; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--bg-deep); color: var(--text-main); font-family: 'Space Grotesk', sans-serif; line-height: 1.6; }
+
+        .orb-container { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; background: var(--bg-deep); }
+        .orb { position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.4; }
+        .orb-1 { width: 40vw; height: 40vw; background: #bc13fe; top: -10%; left: -10%; }
+        .orb-2 { width: 30vw; height: 30vw; background: var(--cyan-glow); bottom: -10%; right: -10%; }
+
+        header { padding: 1.5rem 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .cyber-logo { font-family: 'Syncopate', sans-serif; font-size: 1.5rem; text-decoration: none; color: #fff; letter-spacing: 2px; }
+        
+        .container { max-width: 900px; margin: 100px auto; padding: 0 5%; }
+        h1 { font-family: 'Syncopate', sans-serif; font-size: 3rem; margin-bottom: 2rem; color: var(--cyan-glow); }
+        h2 { font-size: 1.5rem; margin-bottom: 1rem; color: #fff; }
+        p { margin-bottom: 1.5rem; color: var(--text-dim); font-size: 1.1rem; }
+        
+        .founder-card { background: rgba(255,255,255,0.03); padding: 3rem; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); }
+        .footer-link { color: var(--cyan-glow); text-decoration: none; display: inline-block; margin-top: 2rem; border-bottom: 1px solid var(--cyan-glow); }
+    </style>
+</head>
+<body>
+
+    <div class="orb-container"><div class="orb orb-1"></div><div class="orb orb-2"></div></div>
+
+    <header>
+        <a href="index.html" class="cyber-logo">AMSSOFTX</a>
+        <nav><a href="index.html" style="color:#fff; text-decoration:none; font-family: 'Syncopate'; font-size: 0.8rem;">BACK TO HOME</a></nav>
+    </header>
+
+    <div class="container">
+        <h1>About Us</h1>
+        
+        <div class="founder-card">
+            <h2>Our Goal</h2>
+            <p>AMSSoftX is India's first startup focused on AI Vibe Coding and Prompt Engineering. We simplify complex technology by blending smart software with physical hardware.</p>
+            
+            <h2>The Founder</h2>
+            <p>Founded by <strong>Aniket Sarate</strong>, AMSSoftX works to close the gap between AI logic and real-world hardware. Aniket is an expert in Prompt Engineering, Vibe Coding, and Embedded Electronics. He built this platform to provide professional development services and free tools for students and developers.</p>
+            
+            <h2>What We Do</h2>
+            <p>We provide end-to-end technology solutions, including:</p>
+            <ul style="color: var(--text-dim); padding-left: 1.5rem;">
+                <li>AI solutions and custom automation.</li>
+                <li>Custom software for Web, Android, iOS, and PC.</li>
+                <li>Electronics design, IoT, and embedded systems.</li>
+                <li>Digital marketing and WordPress web development.</li>
+                <li>Project guidance for final-year engineering students.</li>
+            </ul>
+            <p style="margin-top: 1.5rem;">At AMSSoftX, we turn complex ideas into simple, working products.</p>
+        </div>
+
+        <a href="index.html" class="footer-link">← Return to Main Terminal</a>
+    </div>
+
+</body>
+</html>
