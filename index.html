@@ -5,154 +5,192 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="AMSSoftX — India's First AI Vibe Coding & Prompt Engineering Startup. Custom Software, WordPress, Electronics & Digital Marketing Solutions.">
     <title>AMSSoftX | The Ai Based Tech Startup</title>
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
     <style>
         :root {
-            --bg-deep: #020202;
-            --bg-card: #050505;
-            --cyan-glow: #00f3ff;
-            --purple-glow: #bc13fe;
-            --text-main: #ffffff;
-            --text-dim: #8892b0;
-            --font-display: 'Syncopate', sans-serif;
+            --paper: #FFFCF5;
+            --ink: #0B0B0B;
+            --lime: #D6FF3F;
+            --pink: #FF2E93;
+            --blue: #2B57FF;
+            --saffron: #FF9933;
+            --flag-green: #128A3E;
+            --text-dim: #4a4a46;
+            --font-display: 'Archivo Black', sans-serif;
             --font-body: 'Space Grotesk', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --shadow-sm: 5px 5px 0 var(--ink);
+            --shadow-md: 8px 8px 0 var(--ink);
+            --shadow-lg: 12px 12px 0 var(--ink);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
 
         body {
-            background-color: var(--bg-deep);
-            color: var(--text-main);
+            background: var(--paper);
+            color: var(--ink);
             font-family: var(--font-body);
             overflow-x: hidden;
             line-height: 1.6;
         }
 
-        /* --- THE IMPOSSIBLE BACKGROUND ORBS --- */
-        .orb-container {
+        ::selection { background: var(--ink); color: var(--lime); }
+
+        /* subtle flat dot texture, no blur, no gradients */
+        .board-bg {
             position: fixed;
-            top: 0; left: 0;
-            width: 100vw; height: 100vh;
-            overflow: hidden;
+            inset: 0;
             z-index: -1;
-            background: var(--bg-deep);
+            background-image: radial-gradient(var(--ink) 1px, transparent 1px);
+            background-size: 26px 26px;
+            opacity: 0.06;
         }
 
-        .orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(120px);
-            opacity: 0.4;
-            animation: float 20s infinite alternate ease-in-out;
+        /* ============ MARQUEE ============ */
+        .marquee-wrap {
+            position: fixed;
+            top: 76px; left: 0; width: 100%;
+            background: var(--ink);
+            color: var(--lime);
+            border-bottom: 4px solid var(--ink);
+            overflow: hidden;
+            white-space: nowrap;
+            z-index: 999;
+            padding: 8px 0;
+        }
+        .marquee-track {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            animation: scroll-left 22s linear infinite;
+        }
+        .marquee-track span { margin: 0 1.4rem; }
+        .marquee-track span.dot { color: var(--pink); }
+        @keyframes scroll-left {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
         }
 
-        .orb-1 {
-            width: 40vw; height: 40vw;
-            background: var(--purple-glow);
-            top: -10%; left: -10%;
-        }
-
-        .orb-2 {
-            width: 30vw; height: 30vw;
-            background: var(--cyan-glow);
-            bottom: -10%; right: -10%;
-            animation-delay: -10s;
-        }
-
-        @keyframes float {
-            0% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(20%, 30%) scale(1.2); }
-            100% { transform: translate(-20%, 10%) scale(0.8); }
-        }
-
-        /* --- THE CSS HOLOGRAPHIC LOGO & HEADER --- */
+        /* ============ HEADER ============ */
         header {
             position: fixed;
             top: 0; width: 100%;
-            padding: 1.5rem 5%;
+            padding: 1rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(2, 2, 2, 0.4);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            background: var(--paper);
+            border-bottom: 4px solid var(--ink);
             z-index: 1000;
         }
 
         .cyber-logo {
-            display: flex;
+            display: inline-flex;
             align-items: center;
             text-decoration: none;
             font-family: var(--font-display);
-            font-weight: 700;
-            font-size: 1.5rem;
-            color: var(--text-main);
-            letter-spacing: 2px;
+            font-size: 1.4rem;
+            color: var(--ink);
+            letter-spacing: 0.5px;
+            background: var(--lime);
+            border: 3px solid var(--ink);
+            padding: 6px 14px;
+            box-shadow: var(--shadow-sm);
+            transform: rotate(-1.5deg);
+            transition: transform 0.2s;
         }
+        .cyber-logo:hover { transform: rotate(0deg) translate(-2px,-2px); }
+        .cyber-logo .x-mark { color: var(--pink); }
 
-        .cyber-logo .x-mark {
-            font-size: 2.2rem;
-            position: relative;
-            margin-left: 5px;
-            color: transparent;
-            -webkit-text-stroke: 1px #fff;
-            transform: skewX(-15deg);
-        }
+        .header-right { display: flex; align-items: center; gap: 0.9rem; }
 
-        .cyber-logo .x-mark::before, .cyber-logo .x-mark::after {
-            content: 'X';
-            position: absolute;
-            top: 0; left: 0;
-            opacity: 0.8;
-            mix-blend-mode: screen;
-            transition: all 0.3s ease;
-        }
-        
-        .cyber-logo .x-mark::before { color: var(--cyan-glow); transform: translate(-3px, -2px); }
-        .cyber-logo .x-mark::after { color: var(--purple-glow); transform: translate(3px, 2px); }
-        
-        .cyber-logo:hover .x-mark::before { transform: translate(-6px, -4px); filter: blur(2px); }
-        .cyber-logo:hover .x-mark::after { transform: translate(6px, 4px); filter: blur(2px); }
+        nav ul { list-style: none; display: flex; gap: 1rem; flex-wrap: wrap; }
 
-        nav ul { list-style: none; display: flex; gap: 3rem; }
-        
         nav a {
-            color: var(--text-dim);
+            color: var(--ink);
             text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 600;
+            font-family: var(--font-mono);
+            font-size: 0.82rem;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            transition: color 0.3s;
-            position: relative;
+            letter-spacing: 0.5px;
+            border: 3px solid var(--ink);
+            padding: 8px 16px;
+            background: var(--paper);
+            box-shadow: 4px 4px 0 var(--ink);
+            transition: all 0.15s;
+            display: inline-block;
+        }
+        nav a:hover {
+            background: var(--blue);
+            color: #fff;
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0 var(--ink);
         }
 
-        nav a:hover { color: var(--text-main); }
-        nav a::before {
-            content: '';
-            position: absolute;
-            bottom: -5px; left: 0; width: 100%; height: 1px;
-            background: linear-gradient(90deg, var(--cyan-glow), var(--purple-glow));
-            transform: scaleX(0);
-            transform-origin: right;
-            transition: transform 0.4s ease;
+        /* GitHub button */
+        .github-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--paper);
+            text-decoration: none;
+            font-family: var(--font-mono);
+            font-size: 0.82rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border: 3px solid var(--ink);
+            padding: 8px 16px;
+            background: var(--ink);
+            box-shadow: 4px 4px 0 var(--pink);
+            transition: all 0.15s;
         }
-        nav a:hover::before {
-            transform: scaleX(1);
-            transform-origin: left;
+        .github-btn svg { width: 18px; height: 18px; flex-shrink: 0; }
+        .github-btn span { white-space: nowrap; }
+        .github-btn:hover {
+            background: var(--lime);
+            color: var(--ink);
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0 var(--pink);
+        }
+        @media (max-width: 480px) {
+            .github-btn span { display: none; }
+            .github-btn { padding: 10px; }
         }
 
-        /* --- HERO SECTION --- */
+        /* Hamburger toggle (hidden on desktop) */
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            width: 44px; height: 44px;
+            background: var(--paper);
+            border: 3px solid var(--ink);
+            box-shadow: 4px 4px 0 var(--ink);
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+        .nav-toggle span {
+            display: block;
+            width: 20px; height: 3px;
+            background: var(--ink);
+            transition: transform 0.25s ease, opacity 0.25s ease;
+        }
+        .nav-toggle.is-open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+        .nav-toggle.is-open span:nth-child(2) { opacity: 0; }
+        .nav-toggle.is-open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+        /* ============ HERO ============ */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -160,285 +198,282 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 140px 5% 80px;
+            padding: 200px 5% 100px;
             position: relative;
         }
 
+        .sticker {
+            position: absolute;
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 0.85rem;
+            background: var(--paper);
+            border: 3px solid var(--ink);
+            border-radius: 100px;
+            padding: 10px 18px;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .sticker-bolt { top: 16%; left: 8%; transform: rotate(-10deg); background: var(--lime); display: none; }
+        .sticker-star { top: 20%; right: 9%; transform: rotate(9deg); background: var(--pink); color: #fff; display: none; }
+        @media (min-width: 1000px) { .sticker-bolt, .sticker-star { display: flex; } }
+
         .hero-badge {
             display: inline-block;
-            padding: 8px 20px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255,255,255,0.1);
+            padding: 10px 22px;
+            background: var(--flag-green);
+            color: #fff;
+            border: 3px solid var(--ink);
             border-radius: 100px;
             font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--text-main);
-            margin-bottom: 2rem;
-            letter-spacing: 0.5px;
+            font-weight: 700;
+            font-family: var(--font-mono);
             text-transform: uppercase;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
-            z-index: 10;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-sm);
+            transform: rotate(-1deg);
         }
 
         .hero h1 {
             font-family: var(--font-display);
-            font-size: clamp(2.5rem, 5.5vw, 5rem);
-            line-height: 1.1;
+            font-size: clamp(2.4rem, 7vw, 5.5rem);
+            line-height: 1.05;
             text-transform: uppercase;
             margin-bottom: 2rem;
-            mix-blend-mode: overlay; 
-            color: rgba(255, 255, 255, 0.9);
-            z-index: 10;
+            max-width: 1000px;
+        }
+        .hero h1 .hl {
+            background: var(--lime);
+            padding: 0 12px;
+            box-shadow: var(--shadow-md);
+            display: inline-block;
+            transform: rotate(-1deg);
         }
 
         .hero-desc {
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             color: var(--text-dim);
-            max-width: 750px;
-            margin-bottom: 3rem;
-            z-index: 10;
+            max-width: 700px;
+            margin-bottom: 2.8rem;
+            font-weight: 500;
         }
 
-        .btn-group {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            z-index: 10;
-        }
+        .btn-group { display: flex; gap: 1.2rem; justify-content: center; flex-wrap: wrap; }
 
         .btn-magic {
             position: relative;
-            padding: 1rem 3rem;
-            background: transparent;
+            padding: 1.1rem 2.6rem;
+            background: var(--pink);
             color: #fff;
             font-family: var(--font-display);
-            font-weight: 700;
-            font-size: 0.9rem;
-            letter-spacing: 3px;
+            font-size: 1rem;
+            letter-spacing: 1px;
             text-decoration: none;
-            border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 100px;
-            overflow: hidden;
-            transition: all 0.3s;
+            border: 3px solid var(--ink);
+            border-radius: 10px;
+            box-shadow: var(--shadow-md);
+            transition: transform 0.15s, box-shadow 0.15s;
         }
-
-        .btn-magic::before {
-            content: '';
-            position: absolute;
-            top: 0; left: -100%; width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s;
-            z-index: -1;
-        }
-
         .btn-magic:hover {
-            border-color: var(--cyan-glow);
-            box-shadow: 0 0 30px rgba(0, 243, 255, 0.3);
+            transform: translate(4px, 4px);
+            box-shadow: 4px 4px 0 var(--ink);
         }
-        .btn-magic:hover::before { left: 100%; }
 
-        /* --- SECTIONS --- */
-        section { padding: 8rem 5%; position: relative; z-index: 5; }
+        /* ============ SECTIONS ============ */
+        section { padding: 7rem 5%; position: relative; z-index: 5; }
 
-        .section-header {
-            text-align: center;
-            margin-bottom: 5rem;
-        }
+        .section-header { text-align: center; margin-bottom: 4.5rem; }
 
         .section-title {
             font-family: var(--font-display);
-            font-size: 2.5rem;
+            font-size: clamp(2rem, 4.5vw, 3.2rem);
             text-transform: uppercase;
-            background: linear-gradient(90deg, #fff, #555);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--ink);
             margin-bottom: 1rem;
+            display: inline-block;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0; right: 0; bottom: -10px;
+            height: 8px;
+            background: repeating-linear-gradient(90deg, var(--saffron) 0 20px, var(--paper) 20px 20px, var(--paper) 20px 24px, #fff 24px 44px, #fff 44px 44px, var(--flag-green) 44px 64px);
         }
 
-        .section-header p {
-            color: var(--text-dim);
-            font-size: 1.1rem;
-            font-weight: 400;
-        }
+        .section-header p { color: var(--text-dim); font-size: 1.1rem; font-weight: 500; margin-top: 1.6rem; }
 
-        /* --- TRAVELLING LIGHT CARDS --- */
+        /* ============ CARDS ============ */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem;
+            gap: 2rem;
             max-width: 1200px;
             margin: 0 auto;
         }
 
         .magic-card {
             position: relative;
-            background: rgba(20, 20, 20, 0.4);
-            border-radius: 20px;
-            padding: 1px;
-            overflow: hidden;
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: var(--paper);
+            border: 3px solid var(--ink);
+            border-radius: 14px;
+            padding: 2.4rem 2rem;
+            box-shadow: var(--shadow-md);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .magic-card:nth-child(odd) { transform: rotate(-0.6deg); }
+        .magic-card:nth-child(even) { transform: rotate(0.6deg); }
+
+        .magic-card:hover {
+            transform: translate(-4px, -4px) rotate(0deg);
+            box-shadow: var(--shadow-lg);
         }
 
-        .magic-card::before {
-            content: '';
+        .card-num {
             position: absolute;
-            top: -50%; left: -50%; width: 200%; height: 200%;
-            background: conic-gradient(
-                transparent, 
-                var(--cyan-glow), 
-                transparent 30%, 
-                transparent 50%, 
-                var(--purple-glow), 
-                transparent 80%
-            );
-            animation: spin 6s linear infinite;
-            z-index: -1;
-            opacity: 0;
-            transition: opacity 0.4s;
+            top: -18px; left: 20px;
+            background: var(--blue);
+            color: #fff;
+            border: 3px solid var(--ink);
+            border-radius: 50%;
+            width: 36px; height: 36px;
+            display: flex; align-items: center; justify-content: center;
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 0.9rem;
         }
 
-        .magic-card:hover { transform: translateY(-10px); }
-        .magic-card:hover::before { opacity: 1; }
-
-        .magic-card-inner {
-            background: var(--bg-card);
-            border-radius: 19px;
-            padding: 3rem 2rem;
-            height: 100%;
-            backdrop-filter: blur(10px);
-        }
-
-        @keyframes spin { 100% { transform: rotate(360deg); } }
-
-        .magic-card-inner h3 {
-            font-size: 1.4rem;
+        .magic-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.15rem;
             margin-bottom: 1rem;
-            font-family: var(--font-body);
-            font-weight: 600;
-            color: var(--text-main);
-        }
-
-        .magic-card-inner p { color: var(--text-dim); font-size: 0.95rem; line-height: 1.7; }
-
-        /* --- ABOUT US SECTION (BENTO STYLED INTERIOR) --- */
-        .about-box {
-            background: rgba(10, 10, 10, 0.6);
-            border: 1px solid rgba(255,255,255,0.05);
-            border-radius: 24px;
-            padding: 5rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            backdrop-filter: blur(10px);
-        }
-
-        .tag-group {
-            display: flex;
-            gap: 0.75rem;
-            flex-wrap: wrap;
-            margin-bottom: 2rem;
-        }
-        
-        .tag {
-            padding: 6px 14px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 4px;
-            font-size: 0.85rem;
-            color: var(--text-main);
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            font-weight: 500;
+            color: var(--ink);
+        }
+        .magic-card p { color: var(--text-dim); font-size: 0.96rem; line-height: 1.7; font-weight: 500; }
+
+        /* ============ ABOUT ============ */
+        .about-box {
+            background: var(--lime);
+            border: 3px solid var(--ink);
+            border-radius: 18px;
+            padding: 4rem;
+            max-width: 1100px;
+            margin: 0 auto;
+            box-shadow: var(--shadow-lg);
+            transform: rotate(-0.4deg);
+        }
+
+        .tag-group { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-bottom: 2rem; }
+
+        .tag {
+            padding: 7px 16px;
+            background: var(--paper);
+            border: 3px solid var(--ink);
+            border-radius: 100px;
+            font-size: 0.82rem;
+            font-family: var(--font-mono);
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--ink);
         }
 
         .about-content h2 {
-            font-family: var(--font-body);
-            font-size: 2.2rem;
+            font-family: var(--font-display);
+            font-size: 2.3rem;
             margin-bottom: 1.5rem;
-            font-weight: 700;
+            text-transform: uppercase;
         }
 
         .about-content p {
-            color: var(--text-dim);
-            font-size: 1.1rem;
+            color: #262620;
+            font-size: 1.08rem;
             margin-bottom: 1.5rem;
             max-width: 900px;
-            line-height: 1.8;
+            line-height: 1.85;
+            font-weight: 500;
+        }
+        .about-content strong {
+            background: var(--ink);
+            color: var(--lime);
+            padding: 0 6px;
         }
 
-        /* --- ECOSYSTEM BENTO BOX GRID --- */
+        /* ============ RESOURCES ============ */
         .bento-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
+            gap: 1.4rem;
             max-width: 1200px;
             margin: 0 auto;
         }
 
         .bento-item {
-            padding: 1.5rem 2rem;
-            background: rgba(255,255,255,0.02);
-            border: 1px solid rgba(255,255,255,0.05);
+            padding: 1.3rem 1.8rem;
+            background: var(--paper);
+            border: 3px solid var(--ink);
             border-radius: 12px;
+            box-shadow: 6px 6px 0 var(--ink);
             text-decoration: none;
-            color: var(--text-main);
-            font-weight: 500;
-            font-size: 1.1rem;
-            transition: all 0.3s;
+            color: var(--ink);
+            font-weight: 700;
+            font-family: var(--font-body);
+            font-size: 1.05rem;
+            transition: all 0.15s;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .bento-item:hover {
-            background: rgba(255,255,255,0.05);
-            border-color: rgba(255,255,255,0.25);
-            padding-left: 2.5rem;
+            background: var(--blue);
+            color: #fff;
+            transform: translate(3px, 3px);
+            box-shadow: 3px 3px 0 var(--ink);
         }
 
-        .bento-item span.arrow {
-            color: var(--cyan-glow);
-            transition: transform 0.3s;
-            font-size: 1.2rem;
-        }
-        .bento-item:hover span.arrow { transform: translateX(5px); }
+        .bento-item span.arrow { color: var(--pink); transition: transform 0.2s; font-size: 1.3rem; font-weight: 700; }
+        .bento-item:hover span.arrow { color: #fff; transform: translateX(6px); }
 
-        /* --- MULTI-COLUMN HIGH-END FOOTER --- */
+        /* ============ FOOTER ============ */
         footer {
-            border-top: 1px solid rgba(255,255,255,0.05);
-            padding: 6rem 5% 3rem;
+            border-top: 4px solid var(--ink);
+            padding: 5rem 5% 3rem;
             position: relative;
             z-index: 5;
-            background: linear-gradient(to top, #000, transparent);
+            background: var(--ink);
+            color: var(--paper);
         }
 
         .footer-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 4rem;
+            gap: 3.5rem;
             max-width: 1200px;
-            margin: 0 auto 5rem;
+            margin: 0 auto 4rem;
         }
 
         .footer-col h4 {
-            font-family: var(--font-body);
-            color: var(--text-main);
-            font-size: 1.05rem;
-            margin-bottom: 1.5rem;
-            font-weight: 600;
-            text-transform: capitalize;
+            font-family: var(--font-display);
+            color: var(--lime);
+            font-size: 1rem;
+            margin-bottom: 1.4rem;
+            text-transform: uppercase;
         }
 
         .footer-col ul { list-style: none; }
-        .footer-col ul li { margin-bottom: 1rem; }
-        
+        .footer-col ul li { margin-bottom: 0.9rem; }
+
         .footer-col ul li a {
-            color: var(--text-dim);
+            color: #d8d8d0;
             text-decoration: none;
             font-size: 0.95rem;
+            font-weight: 500;
             transition: color 0.2s;
         }
-
-        .footer-col ul li a:hover { color: var(--text-main); }
+        .footer-col ul li a:hover { color: var(--pink); }
 
         .footer-bottom {
             max-width: 1200px;
@@ -447,44 +482,129 @@
             justify-content: space-between;
             align-items: center;
             padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            color: var(--text-dim);
+            border-top: 2px solid #3a3a34;
+            color: #b7b7ac;
+            font-family: var(--font-mono);
             font-size: 0.85rem;
         }
 
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
+        }
+
+        /* ============ RESPONSIVE: TABLET ============ */
+        @media (max-width: 1024px) {
+            header { padding: 1rem 4%; }
+            nav ul { gap: 0.6rem; }
+            nav a { padding: 7px 12px; font-size: 0.76rem; }
+            .hero { padding: 190px 4% 90px; }
+            .about-box { padding: 3rem; }
+            section { padding: 6rem 4%; }
+        }
+
+        /* ============ RESPONSIVE: MOBILE / SMALL TABLET ============ */
+        @media (max-width: 860px) {
+            .nav-toggle { display: flex; }
+
+            nav#mainNav {
+                position: fixed;
+                top: 0; left: 0; right: 0;
+                margin-top: 74px;
+                background: var(--paper);
+                border-bottom: 4px solid var(--ink);
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+                z-index: 998;
+            }
+            nav#mainNav.is-open { max-height: 400px; }
+
+            nav#mainNav ul {
+                flex-direction: column;
+                gap: 0.8rem;
+                padding: 1.2rem 5% 1.6rem;
+            }
+            nav#mainNav a { display: block; text-align: center; }
+
+            .marquee-wrap { top: 74px; }
+        }
+
         @media (max-width: 768px) {
-            nav { display: none; }
-            .hero h1 { font-size: 2.2rem; }
-            .cyber-logo .x-mark { font-size: 1.8rem; }
-            .about-box { padding: 2.5rem; }
+            .about-box { padding: 2.2rem; }
             .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
+        }
+
+        @media (max-width: 640px) {
+            header { padding: 0.85rem 4%; }
+            .cyber-logo { font-size: 1.1rem; padding: 5px 11px; }
+            .marquee-wrap { top: 66px; }
+            nav#mainNav { margin-top: 66px; }
+            .hero { padding: 170px 5% 70px; }
+            .hero-badge { font-size: 0.72rem; padding: 8px 16px; }
+            .hero-desc { font-size: 1rem; }
+            .btn-magic { width: 100%; text-align: center; padding: 1rem 1.6rem; }
+            .btn-group { width: 100%; }
+            .section-title { font-size: clamp(1.6rem, 8vw, 2.2rem); }
+            .grid { gap: 1.5rem; }
+            .magic-card { padding: 2rem 1.6rem; }
+            .about-box { padding: 1.6rem; }
+            .about-content h2 { font-size: 1.6rem; }
+            .footer-container { gap: 2.5rem; }
+        }
+
+        @media (max-width: 400px) {
+            .hero h1 { font-size: 2rem; }
+            .tag { font-size: 0.72rem; padding: 6px 12px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="orb-container">
-        <div class="orb orb-1"></div>
-        <div class="orb orb-2"></div>
-    </div>
+    <div class="board-bg"></div>
 
     <header>
-        <a href="#" class="cyber-logo">
-            AMSSOFT<span class="x-mark">X</span>
-        </a>
-        <nav>
-            <ul>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="resources.html">Open Source</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
+        <a href="#" class="cyber-logo">AMSSOFT<span class="x-mark">X</span></a>
+        <div class="header-right">
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="resources.html">Open Source</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <a href="https://github.com/AMSSoftX" target="_blank" class="github-btn">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.09 3.29 9.4 7.86 10.93.57.1.78-.25.78-.55v-2.02c-3.2.7-3.87-1.36-3.87-1.36-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.17.08 1.78 1.2 1.78 1.2 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.06 11.06 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.76.12 3.05.74.81 1.19 1.84 1.19 3.1 0 4.43-2.7 5.4-5.27 5.69.42.36.78 1.07.78 2.16v3.2c0 .3.21.66.79.55A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
+                <span>GitHub</span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
     </header>
 
+    <div class="marquee-wrap">
+        <div class="marquee-track">
+            <span>CUSTOM SOFTWARE</span><span class="dot">●</span>
+            <span>AI &amp; VIBE CODING</span><span class="dot">●</span>
+            <span>ELECTRONICS &amp; HARDWARE</span><span class="dot">●</span>
+            <span>DIGITAL MARKETING &amp; WEB</span><span class="dot">●</span>
+            <span>ACADEMIC PROJECT HELP</span><span class="dot">●</span>
+            <span>FREE SOFTWARE &amp; CODE</span><span class="dot">●</span>
+            <span>CUSTOM SOFTWARE</span><span class="dot">●</span>
+            <span>AI &amp; VIBE CODING</span><span class="dot">●</span>
+            <span>ELECTRONICS &amp; HARDWARE</span><span class="dot">●</span>
+            <span>DIGITAL MARKETING &amp; WEB</span><span class="dot">●</span>
+            <span>ACADEMIC PROJECT HELP</span><span class="dot">●</span>
+            <span>FREE SOFTWARE &amp; CODE</span><span class="dot">●</span>
+        </div>
+    </div>
+
     <section class="hero" id="home">
-        <div class="hero-badge">India's 1st AI Vibe Coding & Prompt Engineering Startup</div>
-        <h1>Building the Future from<br>Circuit to Code</h1>
+        <div class="sticker sticker-bolt">⚡ VIBE CODING</div>
+        <div class="sticker sticker-star">★ PROMPT ENGINEERING</div>
+        <div class="hero-badge">India's 1st AI Vibe Coding &amp; Prompt Engineering Startup</div>
+        <h1>Building the Future from<br>Circuit to <span class="hl">Code</span></h1>
         <p class="hero-desc">AMSSoftX is your elite technology partner. We engineer high-performance AI solutions, robust Custom Software, Embedded Electronics, and data-driven Digital Marketing strategies to scale your vision.</p>
         <div class="btn-group">
             <a href="https://wa.me/919604872319" target="_blank" class="btn-magic">INITIATE PROJECT</a>
@@ -498,45 +618,39 @@
         </div>
         <div class="grid">
             <div class="magic-card">
-                <div class="magic-card-inner">
-                    <h3>Custom Software Development</h3>
-                    <p>End-to-end architecture of dynamic Web Apps, native Android/iOS mobile applications,bots,ai chat bots and highly optimized PC Software built for enterprise performance.</p>
-                </div>
-            </div>
-            
-            <div class="magic-card">
-                <div class="magic-card-inner">
-                    <h3>Digital Marketing & Web</h3>
-                    <p>Professional WordPress website development, advanced SEO optimization,Graphics design and data-driven digital marketing strategies tailored to capture and convert market share.</p>
-                </div>
+                <span class="card-num">1</span>
+                <h3>Custom Software Development</h3>
+                <p>End-to-end architecture of dynamic Web Apps, native Android/iOS mobile applications,bots,ai chat bots and highly optimized PC Software built for enterprise performance.</p>
             </div>
 
             <div class="magic-card">
-                <div class="magic-card-inner">
-                    <h3>Electronics & Hardware</h3>
-                    <p>Comprehensive custom electronics product design, IoT ecosystems, Embedded systems, and complete hardware prototyping bridging physical and digital.</p>
-                </div>
+                <span class="card-num">2</span>
+                <h3>Digital Marketing & Web</h3>
+                <p>Professional WordPress website development, advanced SEO optimization,Graphics design and data-driven digital marketing strategies tailored to capture and convert market share.</p>
             </div>
 
             <div class="magic-card">
-                <div class="magic-card-inner">
-                    <h3>AI & Vibe Coding</h3>
-                    <p>Executing intelligent automation, complex AI model integrations, and rapid system prototyping leveraging our signature Prompt Engineering methodologies.</p>
-                </div>
+                <span class="card-num">3</span>
+                <h3>Electronics & Hardware</h3>
+                <p>Comprehensive custom electronics product design, IoT ecosystems, Embedded systems, and complete hardware prototyping bridging physical and digital.</p>
             </div>
 
             <div class="magic-card">
-                <div class="magic-card-inner">
-                    <h3>Academic Project Help</h3>
-                    <p>Expert guidance and complete development support for final year students. Covering Software, Embedded systems, AI, IoT projects, and thorough documentation.</p>
-                </div>
+                <span class="card-num">4</span>
+                <h3>AI & Vibe Coding</h3>
+                <p>Executing intelligent automation, complex AI model integrations, and rapid system prototyping leveraging our signature Prompt Engineering methodologies.</p>
             </div>
 
             <div class="magic-card">
-                <div class="magic-card-inner">
-                    <h3>Free Software & Code</h3>
-                    <p>Fostering open innovation by continuously delivering completely free software tools, open-source code blocks, and fresh architectural resources for developers.</p>
-                </div>
+                <span class="card-num">5</span>
+                <h3>Academic Project Help</h3>
+                <p>Expert guidance and complete development support for final year students. Covering Software, Embedded systems, AI, IoT projects, and thorough documentation.</p>
+            </div>
+
+            <div class="magic-card">
+                <span class="card-num">6</span>
+                <h3>Free Software & Code</h3>
+                <p>Fostering open innovation by continuously delivering completely free software tools, open-source code blocks, and fresh architectural resources for developers.</p>
             </div>
         </div>
     </section>
@@ -580,10 +694,10 @@
     <footer id="contact">
         <div class="footer-container">
             <div class="footer-col" style="max-width: 300px;">
-                <a href="#" class="cyber-logo" style="margin-bottom: 1.5rem;">
+                <a href="#" class="cyber-logo" style="margin-bottom: 1.5rem; display: inline-flex;">
                     AMSSOFT<span class="x-mark">X</span>
                 </a>
-                <p style="color: var(--text-dim); font-size: 0.95rem; line-height: 1.6;">
+                <p style="color: #d8d8d0; font-size: 0.95rem; line-height: 1.6; margin-top: 1.2rem;">
                     India's 1st AI Vibe Coding & Prompt Engineering Startup. Bridging the gap between intelligent software and physical hardware.
                 </p>
             </div>
@@ -627,5 +741,24 @@
         </div>
     </footer>
 
+    <script>
+        const navToggle = document.getElementById('navToggle');
+        const mainNav = document.getElementById('mainNav');
+
+        navToggle.addEventListener('click', () => {
+            const isOpen = mainNav.classList.toggle('is-open');
+            navToggle.classList.toggle('is-open', isOpen);
+            navToggle.setAttribute('aria-expanded', isOpen);
+        });
+
+        // close menu after tapping a link
+        mainNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mainNav.classList.remove('is-open');
+                navToggle.classList.remove('is-open');
+                navToggle.setAttribute('aria-expanded', 'false');
+            });
+        });
+    </script>
 </body>
 </html>
