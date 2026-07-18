@@ -55,9 +55,10 @@ AMSSoftX maintains the highest standards of professional conduct. All engagement
 ---
 
 ## CORPORATE COMMUNICATION
-We operate with a remote-first approach, ensuring efficiency and clarity in all digital business operations.
+We operate with a remote, ensuring efficiency and clarity in all digital business operations.
 
 *   **Corporate Email:** amssoftx@gmail.com
-*   **Service Model:** Remote-First Global Operations
+*   **Website:** https://amssoftx.github.io/
+*   **Service Model:** Remote
 
 *© 2026 AMSSoftX. All Rights Reserved. Building the future, from circuit to code.*
