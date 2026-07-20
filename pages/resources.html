@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Resources &amp; Tools from AMSSoftX — free software, AI prompt library, open source code, and more.">
+    <title>Resources &amp; Tools | AMSSoftX</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --paper: #FFFCF5;
+            --ink: #0B0B0B;
+            --lime: #D6FF3F;
+            --pink: #FF2E93;
+            --blue: #2B57FF;
+            --saffron: #FF9933;
+            --flag-green: #128A3E;
+            --text-dim: #4a4a46;
+            --font-display: 'Archivo Black', sans-serif;
+            --font-body: 'Space Grotesk', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --shadow-sm: 5px 5px 0 var(--ink);
+            --shadow-md: 8px 8px 0 var(--ink);
+            --shadow-lg: 12px 12px 0 var(--ink);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: var(--paper);
+            color: var(--ink);
+            font-family: var(--font-body);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        ::selection { background: var(--ink); color: var(--lime); }
+
+        .board-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background-image: radial-gradient(var(--ink) 1px, transparent 1px);
+            background-size: 26px 26px;
+            opacity: 0.06;
+        }
+
+        /* ============ HEADER ============ */
+        header {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--paper);
+            border-bottom: 4px solid var(--ink);
+            z-index: 1000;
+        }
+
+        .cyber-logo {
+            display: inline-flex;
+            align-items: center;
+            text-decoration: none;
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            color: var(--ink);
+            letter-spacing: 0.5px;
+            background: var(--lime);
+            border: 3px solid var(--ink);
+            padding: 6px 14px;
+            box-shadow: var(--shadow-sm);
+            transform: rotate(-1.5deg);
+            transition: transform 0.2s;
+        }
+        .cyber-logo:hover { transform: rotate(0deg) translate(-2px,-2px); }
+        .cyber-logo .x-mark { color: var(--pink); }
+
+        .header-right { display: flex; align-items: center; gap: 0.9rem; }
+
+        .github-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--paper);
+            text-decoration: none;
+            font-family: var(--font-mono);
+            font-size: 0.82rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border: 3px solid var(--ink);
+            padding: 8px 16px;
+            background: var(--ink);
+            box-shadow: 4px 4px 0 var(--pink);
+            transition: all 0.15s;
+        }
+        .github-btn svg { width: 18px; height: 18px; flex-shrink: 0; }
+        .github-btn span { white-space: nowrap; }
+        .github-btn:hover {
+            background: var(--lime);
+            color: var(--ink);
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0 var(--pink);
+        }
+        @media (max-width: 480px) {
+            .github-btn span { display: none; }
+            .github-btn { padding: 10px; }
+        }
+
+        /* ============ PAGE CONTENT ============ */
+        .resources-section {
+            padding: 195px 5% 100px;
+            max-width: 1300px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 5;
+        }
+
+        .section-header { text-align: center; margin-bottom: 4rem; }
+
+        .page-eyebrow {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            background: var(--flag-green);
+            color: #fff;
+            border: 3px solid var(--ink);
+            border-radius: 100px;
+            padding: 8px 18px;
+            box-shadow: var(--shadow-sm);
+            transform: rotate(-1deg);
+            margin-bottom: 1.6rem;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4.5vw, 3.2rem);
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+        .section-title .hl {
+            background: var(--lime);
+            padding: 0 12px;
+            box-shadow: var(--shadow-md);
+            display: inline-block;
+            transform: rotate(-1deg);
+        }
+
+        .section-header p {
+            color: var(--text-dim);
+            font-size: 1.1rem;
+            font-weight: 500;
+            max-width: 600px;
+            margin: 1.4rem auto 0;
+        }
+
+        /* ============ RESOURCE GRID ============ */
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.8rem;
+        }
+
+        .resource-card {
+            background: var(--paper);
+            border: 3px solid var(--ink);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+            transition: all 0.15s;
+            display: flex;
+            flex-direction: column;
+            gap: 0.9rem;
+        }
+        .resource-card:nth-child(odd) { transform: rotate(-0.5deg); }
+        .resource-card:nth-child(even) { transform: rotate(0.5deg); }
+        .resource-card:hover {
+            transform: translate(-4px, -4px) rotate(0deg);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .icon-box {
+            width: 52px; height: 52px;
+            background: var(--lime);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            border: 3px solid var(--ink);
+            flex-shrink: 0;
+        }
+
+        .resource-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            line-height: 1.25;
+        }
+
+        .resource-card p {
+            color: var(--text-dim);
+            font-size: 0.98rem;
+            font-weight: 500;
+            flex-grow: 1;
+        }
+
+        .link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            align-self: flex-start;
+            color: var(--ink);
+            text-decoration: none;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border: 3px solid var(--ink);
+            padding: 7px 14px;
+            background: var(--paper);
+            box-shadow: 3px 3px 0 var(--ink);
+            transition: all 0.15s;
+        }
+        .link-btn:hover {
+            background: var(--blue);
+            color: #fff;
+            transform: translate(2px, 2px);
+            box-shadow: 1px 1px 0 var(--ink);
+        }
+
+        .footer-link {
+            color: var(--paper);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 3rem;
+            font-family: var(--font-display);
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            background: var(--pink);
+            border: 3px solid var(--ink);
+            border-radius: 10px;
+            padding: 1rem 1.8rem;
+            box-shadow: var(--shadow-md);
+            transition: transform 0.15s, box-shadow 0.15s;
+        }
+        .footer-link:hover {
+            transform: translate(4px, 4px);
+            box-shadow: 4px 4px 0 var(--ink);
+        }
+
+        /* ============ FOOTER ============ */
+        footer {
+            border-top: 4px solid var(--ink);
+            padding: 2.6rem 5%;
+            position: relative;
+            z-index: 5;
+            background: var(--ink);
+            color: #b7b7ac;
+            text-align: center;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+        }
+        footer strong { color: var(--lime); }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 1024px) {
+            header { padding: 1rem 4%; }
+            .resources-section { padding: 185px 4% 90px; }
+        }
+
+        @media (max-width: 640px) {
+            header { padding: 0.85rem 4%; }
+            .cyber-logo { font-size: 1.1rem; padding: 5px 11px; }
+            .resources-section { padding: 165px 5% 70px; }
+            .resource-card { padding: 1.6rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="board-bg"></div>
+
+    <header>
+        <a href="index.html" class="cyber-logo">AMSSOFT<span class="x-mark">X</span></a>
+        <div class="header-right">
+            <a href="https://github.com/AMSSoftX" target="_blank" class="github-btn">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.09 3.29 9.4 7.86 10.93.57.1.78-.25.78-.55v-2.02c-3.2.7-3.87-1.36-3.87-1.36-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.17.08 1.78 1.2 1.78 1.2 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.06 11.06 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.76.12 3.05.74.81 1.19 1.84 1.19 3.1 0 4.43-2.7 5.4-5.27 5.69.42.36.78 1.07.78 2.16v3.2c0 .3.21.66.79.55A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
+                <span>GitHub</span>
+            </a>
+        </div>
+    </header>
+
+    <section class="resources-section">
+        <div class="section-header">
+            <span class="page-eyebrow">Open Ecosystem</span>
+            <h1 class="section-title">Resources &amp; <span class="hl">Tools</span></h1>
+            <p>Everything we build in the open — utilities, prompts, code, and lessons learned — for anyone building alongside us.</p>
+        </div>
+
+        <div class="resource-grid">
+            <div class="resource-card">
+                <div class="icon-box">🛠️</div>
+                <h3>Free Software Tools</h3>
+                <p>Download our custom-built utilities designed to simplify daily development and automation tasks.</p>
+                <a href="#" class="link-btn">Explore Tools →</a>
+            </div>
+
+            <div class="resource-card">
+                <div class="icon-box">🧠</div>
+                <h3>AI Prompt Library</h3>
+                <p>A curated collection of professional-grade prompts for Vibe Coding, AI automation, and system architecture.</p>
+                <a href="#" class="link-btn">View Prompts →</a>
+            </div>
+
+            <div class="resource-card">
+                <div class="icon-box">🐙</div>
+                <h3>Open Source Code</h3>
+                <p>Browse our GitHub repositories. Access clean, production-ready code snippets and full project templates.</p>
+                <a href="https://github.com/AMSSoftX" target="_blank" class="link-btn">Visit GitHub →</a>
+            </div>
+
+            <div class="resource-card">
+                <div class="icon-box">▶️</div>
+                <h3>YouTube Academy</h3>
+                <p>In-depth video tutorials on Electronics, AI implementation, and startup development workflows.</p>
+                <a href="https://youtube.com/@AMSSoftXTech" target="_blank" class="link-btn">Watch Videos →</a>
+            </div>
+
+            <div class="resource-card">
+                <div class="icon-box">📝</div>
+                <h3>Tech Blogs</h3>
+                <p>Read our latest articles on startup journeys, hardware breakthroughs, and AI trends shaping India's tech future.</p>
+                <a href="#" class="link-btn">Read Blogs →</a>
+            </div>
+
+            <div class="resource-card">
+                <div class="icon-box">🔌</div>
+                <h3>Electronic Hardware</h3>
+                <p>Detailed documentation and demos for our proprietary electronics products and IoT hardware modules.</p>
+                <a href="#" class="link-btn">View Products →</a>
+            </div>
+        </div>
+
+        <a href="index.html" class="footer-link">← Return to Main Terminal</a>
+    </section>
+
+    <footer>
+        <div>&copy; 2026 AMSSoftX. All Rights Reserved. | Initiated &amp; Architected by <strong>Aniket Sarate</strong>.</div>
+    </footer>
+
+</body>
+</html>
