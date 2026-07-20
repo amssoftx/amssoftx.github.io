@@ -1,30 +1,34 @@
-// ================================
-// AMSSoftX Store Engine v1
-// ================================
-
-const STORE_NAME = "AMSSoftX Store";
-
-console.log(STORE_NAME + " Loaded");
-
 async function loadProducts() {
 
-    try {
+    const response = await fetch("data/products.json");
 
-        const response = await fetch("data/products.json");
+    const products = await response.json();
 
-        const products = await response.json();
+    const container = document.getElementById("products");
 
-        console.log(products);
+    container.innerHTML = "";
 
-    }
+    products.forEach(product => {
 
-    catch(error){
+        container.innerHTML += `
 
-        console.error("Products Loading Error");
+        <div class="card">
 
-        console.error(error);
+            <h2>${product.title}</h2>
 
-    }
+            <p>${product.description}</p>
+
+            <h3>₹${product.price}</h3>
+
+            <button onclick="window.open('${product.paymentLink}')">
+                Buy Now
+            </button>
+
+        </div>
+
+        `;
+
+    });
 
 }
 
