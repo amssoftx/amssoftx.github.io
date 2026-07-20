@@ -1,34 +1,48 @@
+console.log("App JS Loaded");
+
 async function loadProducts() {
 
-    const response = await fetch("data/products.json");
+    console.log("Loading Products...");
 
-    const products = await response.json();
+    try {
 
-    const container = document.getElementById("products");
+        const response = await fetch("./data/products.json");
 
-    container.innerHTML = "";
+        console.log(response);
 
-    products.forEach(product => {
+        const products = await response.json();
 
-        container.innerHTML += `
+        console.log(products);
 
-        <div class="card">
+        const container = document.getElementById("products");
 
-            <h2>${product.title}</h2>
+        if(!container){
+            console.log("Products Container NOT Found");
+            return;
+        }
 
-            <p>${product.description}</p>
+        products.forEach(product=>{
 
-            <h3>₹${product.price}</h3>
+            container.innerHTML += `
+                <div class="card">
+                    <h2>${product.title}</h2>
+                    <p>${product.description}</p>
+                    <h3>₹${product.price}</h3>
+                    <button onclick="window.open('${product.paymentLink}')">
+                        Buy Now
+                    </button>
+                </div>
+            `;
 
-            <button onclick="window.open('${product.paymentLink}')">
-                Buy Now
-            </button>
+        });
 
-        </div>
+    }
 
-        `;
+    catch(err){
 
-    });
+        console.error(err);
+
+    }
 
 }
 
