@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact AMSSoftX — India's First AI Vibe Coding & Prompt Engineering Startup.">
+    <title>AMSSoftX | Establish Connection</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --paper: #FFFCF5;
+            --ink: #0B0B0B;
+            --lime: #D6FF3F;
+            --pink: #FF2E93;
+            --blue: #2B57FF;
+            --saffron: #FF9933;
+            --flag-green: #128A3E;
+            --text-dim: #4a4a46;
+            --font-display: 'Archivo Black', sans-serif;
+            --font-body: 'Space Grotesk', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --shadow-sm: 5px 5px 0 var(--ink);
+            --shadow-md: 8px 8px 0 var(--ink);
+            --shadow-lg: 12px 12px 0 var(--ink);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: var(--paper);
+            color: var(--ink);
+            font-family: var(--font-body);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        ::selection { background: var(--ink); color: var(--lime); }
+
+        .board-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background-image: radial-gradient(var(--ink) 1px, transparent 1px);
+            background-size: 26px 26px;
+            opacity: 0.06;
+        }
+
+        /* ============ MARQUEE ============ */
+        .marquee-wrap {
+            position: fixed;
+            top: 76px; left: 0; width: 100%;
+            background: var(--ink);
+            color: var(--lime);
+            border-bottom: 4px solid var(--ink);
+            overflow: hidden;
+            white-space: nowrap;
+            z-index: 999;
+            padding: 8px 0;
+        }
+        .marquee-track {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            animation: scroll-left 22s linear infinite;
+        }
+        .marquee-track span { margin: 0 1.4rem; }
+        .marquee-track span.dot { color: var(--pink); }
+        @keyframes scroll-left {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+
+        /* ============ HEADER ============ */
+        header {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--paper);
+            border-bottom: 4px solid var(--ink);
+            z-index: 1000;
+        }
+
+        .cyber-logo {
+            display: inline-flex;
+            align-items: center;
+            text-decoration: none;
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            color: var(--ink);
+            letter-spacing: 0.5px;
+            background: var(--lime);
+            border: 3px solid var(--ink);
+            padding: 6px 14px;
+            box-shadow: var(--shadow-sm);
+            transform: rotate(-1.5deg);
+            transition: transform 0.2s;
+        }
+        .cyber-logo:hover { transform: rotate(0deg) translate(-2px,-2px); }
+        .cyber-logo .x-mark { color: var(--pink); }
+
+        .header-right { display: flex; align-items: center; gap: 0.9rem; }
+
+        nav ul { list-style: none; display: flex; gap: 1rem; flex-wrap: wrap; }
+
+        nav a {
+            color: var(--ink);
+            text-decoration: none;
+            font-family: var(--font-mono);
+            font-size: 0.82rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border: 3px solid var(--ink);
+            padding: 8px 16px;
+            background: var(--paper);
+            box-shadow: 4px 4px 0 var(--ink);
+            transition: all 0.15s;
+            display: inline-block;
+        }
+        nav a:hover {
+            background: var(--blue);
+            color: #fff;
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0 var(--ink);
+        }
+        nav a.is-active { background: var(--pink); color: #fff; }
+
+        .github-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--paper);
+            text-decoration: none;
+            font-family: var(--font-mono);
+            font-size: 0.82rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border: 3px solid var(--ink);
+            padding: 8px 16px;
+            background: var(--ink);
+            box-shadow: 4px 4px 0 var(--pink);
+            transition: all 0.15s;
+        }
+        .github-btn svg { width: 18px; height: 18px; flex-shrink: 0; }
+        .github-btn span { white-space: nowrap; }
+        .github-btn:hover {
+            background: var(--lime);
+            color: var(--ink);
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0 var(--pink);
+        }
+        @media (max-width: 480px) {
+            .github-btn span { display: none; }
+            .github-btn { padding: 10px; }
+        }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            width: 44px; height: 44px;
+            background: var(--paper);
+            border: 3px solid var(--ink);
+            box-shadow: 4px 4px 0 var(--ink);
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+        .nav-toggle span {
+            display: block;
+            width: 20px; height: 3px;
+            background: var(--ink);
+            transition: transform 0.25s ease, opacity 0.25s ease;
+        }
+        .nav-toggle.is-open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+        .nav-toggle.is-open span:nth-child(2) { opacity: 0; }
+        .nav-toggle.is-open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+        /* ============ CONTACT SECTION ============ */
+        .contact-section {
+            padding: 195px 5% 100px;
+            max-width: 1300px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 5;
+        }
+
+        .section-header { text-align: center; margin-bottom: 4rem; }
+
+        .page-eyebrow {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            background: var(--flag-green);
+            color: #fff;
+            border: 3px solid var(--ink);
+            border-radius: 100px;
+            padding: 8px 18px;
+            box-shadow: var(--shadow-sm);
+            transform: rotate(-1deg);
+            margin-bottom: 1.6rem;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4.5vw, 3.2rem);
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+        .section-title .hl {
+            background: var(--lime);
+            padding: 0 12px;
+            box-shadow: var(--shadow-md);
+            display: inline-block;
+            transform: rotate(-1deg);
+        }
+
+        .section-header p {
+            color: var(--text-dim);
+            font-size: 1.1rem;
+            font-weight: 500;
+            max-width: 600px;
+            margin: 1.4rem auto 0;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        /* ============ FORM ============ */
+        .glass-form {
+            background: var(--paper);
+            border: 3px solid var(--ink);
+            border-radius: 18px;
+            padding: 2.8rem;
+            box-shadow: var(--shadow-lg);
+            transform: rotate(-0.3deg);
+        }
+
+        .input-group { margin-bottom: 1.6rem; position: relative; }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 0.6rem;
+            font-size: 0.8rem;
+            color: var(--ink);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 700;
+            font-family: var(--font-mono);
+        }
+
+        .glass-input {
+            width: 100%;
+            background: var(--paper);
+            border: 3px solid var(--ink);
+            padding: 0.9rem 1.2rem;
+            border-radius: 10px;
+            color: var(--ink);
+            font-family: var(--font-body);
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.15s ease;
+            outline: none;
+            box-shadow: 4px 4px 0 var(--ink);
+        }
+
+        .glass-input::placeholder { color: #9a9a90; }
+
+        .glass-input:focus {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0 var(--ink);
+            background: #FFFEF9;
+        }
+
+        textarea.glass-input { resize: vertical; min-height: 140px; }
+
+        .btn-magic {
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            padding: 1.1rem 2.6rem;
+            background: var(--pink);
+            color: #fff;
+            font-family: var(--font-display);
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            text-decoration: none;
+            border: 3px solid var(--ink);
+            border-radius: 10px;
+            box-shadow: var(--shadow-md);
+            transition: transform 0.15s, box-shadow 0.15s;
+            cursor: pointer;
+            margin-top: 0.5rem;
+        }
+        .btn-magic:hover {
+            transform: translate(4px, 4px);
+            box-shadow: 4px 4px 0 var(--ink);
+        }
+
+        /* ============ INFO PANEL ============ */
+        .info-panel { display: flex; flex-direction: column; gap: 1.3rem; }
+
+        .bento-item {
+            padding: 1.5rem 1.8rem;
+            background: var(--paper);
+            border: 3px solid var(--ink);
+            border-radius: 14px;
+            text-decoration: none;
+            color: var(--ink);
+            transition: all 0.15s;
+            display: flex;
+            align-items: center;
+            gap: 1.3rem;
+            box-shadow: 6px 6px 0 var(--ink);
+        }
+        .bento-item:nth-child(odd) { transform: rotate(-0.4deg); }
+        .bento-item:nth-child(even) { transform: rotate(0.4deg); }
+
+        .bento-item:hover {
+            background: var(--blue);
+            color: #fff;
+            transform: translate(-4px, -4px) rotate(0deg);
+            box-shadow: 10px 10px 0 var(--ink);
+        }
+
+        .icon-box {
+            width: 46px; height: 46px;
+            background: var(--lime);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.3rem;
+            border: 3px solid var(--ink);
+            flex-shrink: 0;
+            transition: all 0.15s;
+        }
+        .bento-item:hover .icon-box { background: var(--paper); }
+
+        .info-content h3 {
+            font-size: 0.78rem;
+            color: inherit;
+            opacity: 0.65;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.3rem;
+            font-family: var(--font-mono);
+            font-weight: 700;
+        }
+
+        .info-content p {
+            font-size: 1.1rem;
+            font-weight: 700;
+            font-family: var(--font-body);
+            margin: 0;
+            color: inherit;
+        }
+
+        .info-row { display: flex; gap: 1rem; margin-top: 0.3rem; }
+        .info-row .bento-item { flex: 1; justify-content: center; padding: 1.4rem; gap: 0.6rem; font-weight: 700; }
+
+        /* ============ FOOTER ============ */
+        footer {
+            border-top: 4px solid var(--ink);
+            padding: 2.6rem 5%;
+            position: relative;
+            z-index: 5;
+            background: var(--ink);
+            color: #b7b7ac;
+            text-align: center;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+        }
+        footer strong { color: var(--lime); }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 1024px) {
+            header { padding: 1rem 4%; }
+            nav ul { gap: 0.6rem; }
+            nav a { padding: 7px 12px; font-size: 0.76rem; }
+            .contact-section { padding: 185px 4% 90px; }
+        }
+
+        @media (max-width: 900px) {
+            .contact-grid { grid-template-columns: 1fr; gap: 2.4rem; }
+            .info-panel { order: 2; }
+            .glass-form { order: 1; padding: 2.2rem; }
+        }
+
+        @media (max-width: 860px) {
+            .nav-toggle { display: flex; }
+
+            nav#mainNav {
+                position: fixed;
+                top: 0; left: 0; right: 0;
+                margin-top: 74px;
+                background: var(--paper);
+                border-bottom: 4px solid var(--ink);
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+                z-index: 998;
+            }
+            nav#mainNav.is-open { max-height: 400px; }
+            nav#mainNav ul { flex-direction: column; gap: 0.8rem; padding: 1.2rem 5% 1.6rem; }
+            nav#mainNav a { display: block; text-align: center; }
+
+            .marquee-wrap { top: 74px; }
+        }
+
+        @media (max-width: 640px) {
+            header { padding: 0.85rem 4%; }
+            .cyber-logo { font-size: 1.1rem; padding: 5px 11px; }
+            .marquee-wrap { top: 66px; }
+            nav#mainNav { margin-top: 66px; }
+            .contact-section { padding: 165px 5% 70px; }
+            .glass-form { padding: 1.7rem; }
+            .info-row { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="board-bg"></div>
+
+    <header>
+        <a href="index.html" class="cyber-logo">AMSSOFT<span class="x-mark">X</span></a>
+        <div class="header-right">
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="index.html#about">About Us</a></li>
+                    <li><a href="index.html#resources">Open Source</a></li>
+                    <li><a href="contact.html" class="is-active">Contact</a></li>
+                </ul>
+            </nav>
+            <a href="https://github.com/AMSSoftX" target="_blank" class="github-btn">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.09 3.29 9.4 7.86 10.93.57.1.78-.25.78-.55v-2.02c-3.2.7-3.87-1.36-3.87-1.36-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.17.08 1.78 1.2 1.78 1.2 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.06 11.06 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.76.12 3.05.74.81 1.19 1.84 1.19 3.1 0 4.43-2.7 5.4-5.27 5.69.42.36.78 1.07.78 2.16v3.2c0 .3.21.66.79.55A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
+                <span>GitHub</span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <div class="marquee-wrap">
+        <div class="marquee-track">
+            <span>CUSTOM SOFTWARE</span><span class="dot">●</span>
+            <span>AI &amp; VIBE CODING</span><span class="dot">●</span>
+            <span>ELECTRONICS &amp; HARDWARE</span><span class="dot">●</span>
+            <span>DIGITAL MARKETING &amp; WEB</span><span class="dot">●</span>
+            <span>ACADEMIC PROJECT HELP</span><span class="dot">●</span>
+            <span>FREE SOFTWARE &amp; CODE</span><span class="dot">●</span>
+            <span>CUSTOM SOFTWARE</span><span class="dot">●</span>
+            <span>AI &amp; VIBE CODING</span><span class="dot">●</span>
+            <span>ELECTRONICS &amp; HARDWARE</span><span class="dot">●</span>
+            <span>DIGITAL MARKETING &amp; WEB</span><span class="dot">●</span>
+            <span>ACADEMIC PROJECT HELP</span><span class="dot">●</span>
+            <span>FREE SOFTWARE &amp; CODE</span><span class="dot">●</span>
+        </div>
+    </div>
+
+    <section class="contact-section">
+        <div class="section-header">
+            <span class="page-eyebrow">Get In Touch</span>
+            <h1 class="section-title">Establish <span class="hl">Connection</span></h1>
+            <p>Deploy your project requirements or academic inquiries to our system. Our architects will respond shortly.</p>
+        </div>
+
+        <div class="contact-grid">
+            <div class="glass-form">
+                <form action="#" method="POST">
+                    <div class="input-group">
+                        <label for="name">System ID (Name)</label>
+                        <input type="text" id="name" name="name" class="glass-input" placeholder="Enter your name" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="email">Comms Link (Email)</label>
+                        <input type="email" id="email" name="email" class="glass-input" placeholder="Enter your email" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="subject">Protocol Subject</label>
+                        <input type="text" id="subject" name="subject" class="glass-input" placeholder="e.g. AI Project, Custom Software">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="message">Transmission Data</label>
+                        <textarea id="message" name="message" class="glass-input" placeholder="Describe your project or inquiry..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-magic">SEND TRANSMISSION</button>
+                </form>
+            </div>
+
+            <div class="info-panel">
+                <a href="https://wa.me/919604872319" target="_blank" class="bento-item">
+                    <div class="icon-box">💬</div>
+                    <div class="info-content">
+                        <h3>Secure WhatsApp Line</h3>
+                        <p>+91 96048 72319</p>
+                    </div>
+                </a>
+
+                <a href="mailto:amssoftx@gmail.com" class="bento-item">
+                    <div class="icon-box">✉️</div>
+                    <div class="info-content">
+                        <h3>Email Interface</h3>
+                        <p>amssoftx@gmail.com</p>
+                    </div>
+                </a>
+
+                <a href="tel:+919604872319" class="bento-item">
+                    <div class="icon-box">📞</div>
+                    <div class="info-content">
+                        <h3>Voice Comms</h3>
+                        <p>+91 96048 72319</p>
+                    </div>
+                </a>
+
+                <div class="bento-item" style="cursor: default;">
+                    <div class="icon-box">📍</div>
+                    <div class="info-content">
+                        <h3>Headquarters</h3>
+                        <p>Pune, Maharashtra, India</p>
+                    </div>
+                </div>
+
+                <div class="info-row">
+                    <a href="https://github.com/AMSSoftX" target="_blank" class="bento-item">🐙 GitHub</a>
+                    <a href="https://youtube.com/@AMSSoftX" target="_blank" class="bento-item">▶️ YouTube</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div>&copy; 2026 AMSSoftX. All Rights Reserved. | Initiated &amp; Architected by <strong>Aniket Sarate</strong>.</div>
+    </footer>
+
+    <script>
+        const navToggle = document.getElementById('navToggle');
+        const mainNav = document.getElementById('mainNav');
+
+        navToggle.addEventListener('click', () => {
+            const isOpen = mainNav.classList.toggle('is-open');
+            navToggle.classList.toggle('is-open', isOpen);
+            navToggle.setAttribute('aria-expanded', isOpen);
+        });
+
+        mainNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mainNav.classList.remove('is-open');
+                navToggle.classList.remove('is-open');
+                navToggle.setAttribute('aria-expanded', 'false');
+            });
+        });
+    </script>
+</body>
+</html>
