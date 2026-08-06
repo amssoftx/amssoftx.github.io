@@ -57,7 +57,7 @@ AMSSoftX maintains the highest standards of professional conduct. All engagement
 ## CORPORATE COMMUNICATION
 We operate with a remote, ensuring efficiency and clarity in all digital business operations.
 
-*   **Corporate Email:** inf.amssoftx@gmail.com
+*   **Corporate Email:** amssoftx@gmail.com
 *   **Website:** https://amssoftx.github.io/
 *   **Service Model:** Remote
 
