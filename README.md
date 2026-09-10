@@ -5,7 +5,7 @@
 ## CORPORATE OVERVIEW
 AMSSoftX is a high-velocity technology architecture firm operating on a global scale. We specialize in the convergence of Artificial Intelligence, 
 Embedded Systems, and Enterprise Software Development. Our mission is to transform complex conceptual frameworks into high-performance, scalable, 
-and tangible technological realities. We define our practice through "Vibe Coding"—a methodology that harmonizes rapid AI-driven development with robust, 
+and tangible technological realities. We define our practice through "AI Solutions"—a methodology that harmonizes rapid AI-driven development with robust, 
 production-ready engineering standards.
 
 ---
@@ -20,7 +20,7 @@ Our software development practice encompasses the full lifecycle of application 
 
 ### 2. AI & ADVANCED PROMPT ENGINEERING
 We utilize state-of-the-art AI integration to automate workflows and enhance product intelligence. Our services include:
-*   **Prompt Engineering:** Designing highly optimized prompts for complex AI model interaction.
+*   **AI-Driven Application Development:** Designing highly optimized prompts for complex AI model interaction.
 *   **Automation Ecosystems:** Developing autonomous systems that integrate with existing client infrastructure.
 *   **Algorithmic Innovation:** Leveraging machine learning to solve unique business challenges through data-driven insights.
 
